@@ -52,20 +52,38 @@ function Exams() {
 }
 
 function Application() {
-  const [form, setForm] = useState({
-    name: '',
-    father: '',
-    dob: '',
-    education: ''
-  });
+  const [form, setForm] = useState(() => {
+  try {
+    return JSON.parse(localStorage.getItem('studentForm')) || {
+      name: '',
+      father: '',
+      dob: '',
+      education: ''
+    };
+  } catch {
+    return {
+      name: '',
+      father: '',
+      dob: '',
+      education: ''
+    };
+  }
+});
 
   const [photo, setPhoto] = useState('');
   const [signature, setSignature] = useState('');
   const [message, setMessage] = useState('');
 
   function update(event) {
-    setForm({ ...form, [event.target.name]: event.target.value });
-  }
+  const updatedForm = {
+    ...form,
+    [event.target.name]: event.target.value
+  };
+
+  setForm(updatedForm);
+  localStorage.setItem('studentForm', JSON.stringify(updatedForm));
+}
+    
 
   function uploadFile(event, setter) {
     const file = event.target.files?.[0];
