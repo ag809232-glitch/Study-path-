@@ -514,3 +514,17 @@ input {
     padding: 18px;
   }
 }
+.form-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.form-buttons button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  box-sizing: border-box;
+}
