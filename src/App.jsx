@@ -99,7 +99,7 @@ useEffect(() => {
     if (!file) return;
 
     if (!['image/jpeg', 'image/png'].includes(file.type)) {
-      setMessage('Please select a JPG or PNG image.');.');
+      setMessage('Please select a JPG or PNG image.');
       event.target.value = '';
       return;
     }
