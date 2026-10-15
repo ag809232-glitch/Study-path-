@@ -131,17 +131,33 @@ reader.onload = () => {
 reader.readAsDataURL(file);
    }
 
-  function submit(event) {
-    event.preventDefault();
+  async function submit(event) {
+  event.preventDefault();
 
-    if (!photo || !signature) {
-      setMessage('Please upload both photo and signature.');
-      return;
-    }
+  if (!photo || !signature) {
+    setMessage('Please upload both photo and signature.');
+    return;
+  }
+
+  try {
+    const formRef = push(ref(database, 'applications'));
+
+    await set(formRef, {
+      ...form,
+      photo,
+      signature,
+      submittedAt: new Date().toISOString()
+    });
 
     setMessage(
-      'Preview ready! Preview ready! This demo form does not permanently save or submit your data.'
+      `Form submitted successfully! Receipt ID: ${formRef.key}`
     );
+  } catch (error) {
+    console.error(error);
+    setMessage(
+      'Could not submit the form. Please check database permissions.'
+    );
+  }
   }
 
   return (
