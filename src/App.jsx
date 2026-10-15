@@ -198,13 +198,20 @@ reader.readAsDataURL(file);
         )}
 
         
-<button type="button" onClick={() => setMessage("Please check your details before submitting.")}>
-  Preview Form
-</button>
 
-<button type="submit">
-  Submit Application
-</button>
+<div className="form-buttons">
+  <button
+    type="button"
+    onClick={() => setMessage("Please check your details before submitting.")}
+  >
+    Preview Form
+  </button>
+
+  <button type="submit">
+    Submit Application
+  </button>
+</div>
+        
         
       </form>
 
