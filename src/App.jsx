@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function Home() {
@@ -72,6 +72,15 @@ function Application() {
 
   const [photo, setPhoto] = useState('');
   const [signature, setSignature] = useState('');
+  
+useEffect(() => {
+  const savedPhoto = localStorage.getItem('studentPhoto');
+  const savedSignature = localStorage.getItem('studentSignature');
+
+  if (savedPhoto) setPhoto(savedPhoto);
+  if (savedSignature) setSignature(savedSignature);
+
+  }, []);
   const [message, setMessage] = useState('');
 
   function update(event) {
@@ -90,7 +99,7 @@ function Application() {
     if (!file) return;
 
     if (!['image/jpeg', 'image/png'].includes(file.type)) {
-      setMessage('.');
+      setMessage('Please select a JPG or PNG image.');.');
       event.target.value = '';
       return;
     }
@@ -101,9 +110,24 @@ function Application() {
       return;
     }
 
-    setter(URL.createObjectURL(file));
-    setMessage('Please select a JPG or PNG image.');
+    const reader = new FileReader();
+
+reader.onload = () => {
+  const imageData = reader.result;
+
+  setter(imageData);
+
+  if (setter === setPhoto) {
+    localStorage.setItem('studentPhoto', imageData);
+  } else if (setter === setSignature) {
+    localStorage.setItem('studentSignature', imageData);
   }
+
+  setMessage('');
+};
+
+reader.readAsDataURL(file);
+   }
 
   function submit(event) {
     event.preventDefault();
