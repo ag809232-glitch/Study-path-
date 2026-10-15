@@ -197,7 +197,15 @@ reader.readAsDataURL(file);
           <img src={signature} alt="Signature preview" width="180" />
         )}
 
-        <button type="submit">Preview Form</button>
+        
+<button type="button" onClick={() => setMessage("Please check your details before submitting.")}>
+  Preview Form
+</button>
+
+<button type="submit">
+  Submit Application
+</button>
+        
       </form>
 
       {message && <p>{message}</p>}
