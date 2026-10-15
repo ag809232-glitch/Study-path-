@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ref, push, set } from "firebase/database";
+import { database } from "./firebase";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function Home() {
