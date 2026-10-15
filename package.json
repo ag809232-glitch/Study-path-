@@ -1,3 +1,4 @@
+
 {
   "name": "study-path-client",
   "version": "1.0.0",
@@ -13,7 +14,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "latest",
-    
-  },"firebase": "latest"
+    "firebase": "latest"
+  },
   "devDependencies": {}
 }
