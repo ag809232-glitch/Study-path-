@@ -409,3 +409,108 @@ footer small {
     padding: 18px;
   }
 }
+
+/* Study Path design improvements */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fc;
+  color: #243047;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 5%;
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+nav a {
+  color: #2457c5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #123580;
+}
+
+.section,
+.form-section,
+.hero {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 22px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(30, 60, 100, 0.09);
+}
+
+button,
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #2457c5;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  .section,
+  .form-section,
+  .hero {
+    margin: 16px auto;
+    padding: 18px;
+  }
+}
