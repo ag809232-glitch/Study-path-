@@ -220,7 +220,7 @@ reader.readAsDataURL(file);
         
       </form>
       
-{showPreview && (
+{showPreview ? (
   <div className="form-preview">
     <h2>Application Preview</h2>
     <p><strong>Student Name:</strong> {form.name}</p>
@@ -242,7 +242,7 @@ reader.readAsDataURL(file);
       </div>
     )}
   </div>
-)}
+) : (
       
 
       {message && <p>{message}</p>}
