@@ -72,31 +72,31 @@ function Application() {
     if (!file) return;
 
     if (!['image/jpeg', 'image/png'].includes(file.type)) {
-      setMessage('JPG ya PNG image select karein.');
+      setMessage('.');
       event.target.value = '';
       return;
     }
 
     if (file.size > 2 * 1024 * 1024) {
-      setMessage('Image 2 MB se chhoti honi chahiye.');
+      setMessage('Image size must be less than 2 MB.');
       event.target.value = '';
       return;
     }
 
     setter(URL.createObjectURL(file));
-    setMessage('');
+    setMessage('Please select a JPG or PNG image.');
   }
 
   function submit(event) {
     event.preventDefault();
 
     if (!photo || !signature) {
-      setMessage('Photo aur signature dono upload karein.');
+      setMessage('Please upload both photo and signature.');
       return;
     }
 
     setMessage(
-      'Preview ready! Yeh demo form data ko permanently save ya submit nahi karta.'
+      'Preview ready! Preview ready! This demo form does not permanently save or submit your data.'
     );
   }
 
