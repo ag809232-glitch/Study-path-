@@ -219,36 +219,31 @@ reader.readAsDataURL(file);
         
         
       </form>
-      
-{showPreview ? (
-  <div className="form-preview">
-    <h2>Application Preview</h2>
-    <p><strong>Student Name:</strong> {form.name}</p>
-    <p><strong>Father's Name:</strong> {form.father}</p>
-    <p><strong>Date of Birth:</strong> {form.dob}</p>
-    <p><strong>Education:</strong> {form.education}</p>
-
-    {photo && (
-      <div>
-        <p><strong>Photo:</strong></p>
-        <img src={photo} alt="Student photo" width="120" />
-      </div>
-    )}
-
-    {signature && (
-      <div>
-        <p><strong>Signature:</strong></p>
-        <img src={signature} alt="Student signature" width="180" />
-      </div>
-    )}
-  </div>
-) : (
-      
-
       {message && <p>{message}</p>}
+      
+
+      {showPreview ? (
+        <div className="form-preview">
+          <h2>Application Preview</h2>
+          <p><strong>Student Name:</strong> {form.name}</p>
+          <p><strong>Father's Name:</strong> {form.father}</p>
+          <p><strong>Date of Birth:</strong> {form.dob}</p>
+          <p><strong>Education:</strong> {form.education}</p>
+
+          {photo && <img src={photo} alt="Student photo" width="120" />}
+          {signature && <img src={signature} alt="Student signature" width="180" />}
+
+          <button type="button" onClick={() => setShowPreview(false)}>
+            Back to Form
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   );
 }
+
 
 
 export default function App() {
