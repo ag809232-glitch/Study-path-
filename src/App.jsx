@@ -71,6 +71,9 @@ function Application() {
     };
   }
 });
+  
+const [showPreview, setShowPreview] = useState(false);
+  
 
   const [photo, setPhoto] = useState('');
   const [signature, setSignature] = useState('');
@@ -200,12 +203,14 @@ reader.readAsDataURL(file);
         
 
 <div className="form-buttons">
-  <button
-    type="button"
-    onClick={() => setMessage("Please check your details before submitting.")}
-  >
-    Preview Form
-  </button>
+  
+<button
+  type="button"
+  onClick={() => setShowPreview(!showPreview)}
+>
+  {showPreview ? "Hide Preview" : "Preview Form"}
+</button>
+  
 
   <button type="submit">
     Submit Application
@@ -214,6 +219,31 @@ reader.readAsDataURL(file);
         
         
       </form>
+      
+{showPreview && (
+  <div className="form-preview">
+    <h2>Application Preview</h2>
+    <p><strong>Student Name:</strong> {form.name}</p>
+    <p><strong>Father's Name:</strong> {form.father}</p>
+    <p><strong>Date of Birth:</strong> {form.dob}</p>
+    <p><strong>Education:</strong> {form.education}</p>
+
+    {photo && (
+      <div>
+        <p><strong>Photo:</strong></p>
+        <img src={photo} alt="Student photo" width="120" />
+      </div>
+    )}
+
+    {signature && (
+      <div>
+        <p><strong>Signature:</strong></p>
+        <img src={signature} alt="Student signature" width="180" />
+      </div>
+    )}
+  </div>
+)}
+      
 
       {message && <p>{message}</p>}
     </section>
